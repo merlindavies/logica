@@ -190,15 +190,16 @@ def Logica(line, cell, run_query):
   program = universe.LogicaProgram(parsed_rules)
   engine = program.annotations.Engine()
 
-  if engine == 'bigquery' and not BQ_READY:
-    print(color.Format(
-      '[ {error}Error{end} ] BigQuery client and/or authentification is not installed. \n'
-      'It is the easiest to run BigQuery requests from Google CoLab:\n'
-      '  https://colab.research.google.com/.\n'
-      'Note that running Logica on SQLite requires no installation.\n'
-      'This could be a good fit for working with small data or learning Logica.\n'
-      'Use {warning}@Engine("sqlite");{end} annotation in your program to use SQLite.'))
-    return
+  
+  #if engine == 'bigquery' and not BQ_READY:
+  #  print(color.Format(
+  #    '[ {error}Error{end} ] BigQuery client and/or authentification is not installed. \n'
+  #    'It is the easiest to run BigQuery requests from Google CoLab:\n'
+  #    '  https://colab.research.google.com/.\n'
+  #    'Note that running Logica on SQLite requires no installation.\n'
+  #    'This could be a good fit for working with small data or learning Logica.\n'
+  #    'Use {warning}@Engine("sqlite");{end} annotation in your program to use SQLite.'))
+  #  return
 
   bar = TabBar(predicates + ['(Log)'])
   logs_idx = len(predicates)
