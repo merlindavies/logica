@@ -232,31 +232,31 @@ def Logica(line, cell, run_query):
           print('Query is stored at %s variable.' %
                 color.Warn(predicate + '_sql'))
 
-  with bar.output_to(logs_idx):
-    if engine == 'sqlite':
-      sql_runner = SqliteRunner()
-    elif engine == 'psql':
-      sql_runner = PostgresRunner()
-    else:
-      sql_runner = RunSQL
-    result_map = concertina_lib.ExecuteLogicaProgram(
-      executions, sql_runner=sql_runner, sql_engine=engine)
+#  with bar.output_to(logs_idx):
+#    if engine == 'sqlite':
+#      sql_runner = SqliteRunner()
+#    elif engine == 'psql':
+#      sql_runner = PostgresRunner()
+#    else:
+#      sql_runner = RunSQL
+#    result_map = concertina_lib.ExecuteLogicaProgram(
+#      executions, sql_runner=sql_runner, sql_engine=engine)
 
-  for idx, predicate in enumerate(predicates):
-    t = result_map[predicate]
-    ip.push({predicate: t})
-    with bar.output_to(idx):
-      with sub_bars[idx].output_to(1): 
-        if run_query:
-          print(
-              color.Format(
-                  'The following table is stored at {warning}%s{end} '
-                  'variable.' %
-                  predicate))
-          display(t)  
-        else:
-          print('The query was not run.')
-      print(' ') # To activate the tabbar.
+#  for idx, predicate in enumerate(predicates):
+#    t = result_map[predicate]
+#    ip.push({predicate: t})
+#    with bar.output_to(idx):
+#      with sub_bars[idx].output_to(1): 
+#        if run_query:
+#          print(
+#              color.Format(
+#                  'The following table is stored at {warning}%s{end} '
+#                  'variable.' %
+#                  predicate))
+#          display(t)  
+#        else:
+#          print('The query was not run.')
+#      print(' ') # To activate the tabbar.
 
 def PostgresJumpStart():
   # Install postgresql server.
